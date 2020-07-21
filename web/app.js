@@ -86,6 +86,19 @@ app.route('/api/product')
         res.status(500).json({"error": error});
       });
   })
+app.delete('/api/product/:id', function (req, res) {
+  // sql-запрос на удаление описания товара в БД
+  db.none(`DELETE FROM public.product WHERE id = ${req.params.id}`)
+    .then(function () {
+      // отправка веб-клиенту статуса "no content"
+      res.status(204).send();
+    })
+    .catch(function (error) {
+      console.log("ERROR:", error);
+      // отправка веб-клиенту статуса "ошибка на сервере" и сообщения об этом в теле ответа
+      res.status(502).json({"error": error});
+    });
+})
 // запуск прослушивания веб-запросов настроенным выше экземпляром веб-сервера
 app.listen(port, host, function () {
   console.log(`running on http://${host}:${port}`);
