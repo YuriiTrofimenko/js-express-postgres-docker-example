@@ -13,7 +13,8 @@ const db_host = process.env.DB_HOST || 'localhost';
 const db_user = process.env.DB_USER || 'remote_admin';
 const db_password = process.env.DB_PASSWORD || 1;
 const db_port = process.env.DB_PORT || 5432;
-const db = pgp(`postgres://${db_user}:${db_password}@${db_host}:${db_port}/postgres`);
+// const db = pgp(`postgres://${db_user}:${db_password}@${db_host}:${db_port}/postgres`);
+const db = pgp(`postgres://tvqansbz:0t4Q6OLGdiNtciQ2cSTCF50TbPII_ty0@balarama.db.elephantsql.com:5432/tvqansbz`)
 // параметры для запуска веб-сервера express
 const port = process.env.WEB_PORT || 4000;
 const host = process.env.WEB_HOST || 'localhost';
